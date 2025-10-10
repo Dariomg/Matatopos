@@ -1,0 +1,27 @@
+.carrera-container {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.corredor {
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  background-image: url('/topo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: correr 5s linear infinite;
+}
+
+@keyframes correr {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 100%;
+  }
+}

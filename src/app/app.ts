@@ -1,12 +1,23 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { Contador } from './contador/contador';
+import { Matatopos } from './matatopos/matatopos';
+import { Circulo } from './circulo/circulo';
+import { Carrera } from './carrera/carrera';
+import { ListaPersonajes } from './lista-personajes/lista-personajes';
+
+bootstrapApplication(ListaPersonajes)
+  .catch(err => console.error(err));
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule, Contador, Matatopos, Circulo, Carrera, ListaPersonajes],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
+
 export class App {
   protected readonly title = signal('Matatopos');
 }

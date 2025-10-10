@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Matatopos</h1>
+  <p>Puntos: {{ score }}</p>
+  <div class="grid">
+    <div class="cell" [class.active]="activeIndex === 0" (click)="hitTopo(0)">
+      <div class="topo" *ngIf="activeIndex === 0"></div>
+    </div>
+    <div class="cell" [class.active]="activeIndex === 1" (click)="hitTopo(1)">
+      <div class="topo" *ngIf="activeIndex === 1"></div>
+    </div>
+    <div class="cell" [class.active]="activeIndex === 2" (click)="hitTopo(2)">
+      <div class="topo" *ngIf="activeIndex === 2"></div>
+    </div>
+    <div class="cell" [class.active]="activeIndex === 3" (click)="hitTopo(3)">
+      <div class="topo" *ngIf="activeIndex === 3"></div>
+    </div>
+    <div class="cell" [class.active]="activeIndex === 4" (click)="hitTopo(4)">
+      <div class="topo" *ngIf="activeIndex === 4"></div>
+    </div>
+    <div class="cell" [class.active]="activeIndex === 5" (click)="hitTopo(5)">
+      <div class="topo" *ngIf="activeIndex === 5"></div>
+    </div>
+    <div class="cell" [class.active]="activeIndex === 6" (click)="hitTopo(6)">
+      <div class="topo" *ngIf="activeIndex === 6"></div>
+    </div>
+    <div class="cell" [class.active]="activeIndex === 7" (click)="hitTopo(7)">
+      <div class="topo" *ngIf="activeIndex === 7"></div>
+    </div>
+    <div class="cell" [class.active]="activeIndex === 8" (click)="hitTopo(8)">
+      <div class="topo" *ngIf="activeIndex === 8"></div>
+    </div>
+  </div>
+</div>
