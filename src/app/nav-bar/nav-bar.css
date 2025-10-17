@@ -1,0 +1,21 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.opcion{
+    cursor: pointer;
+}
+.opcion:hover{
+        font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .opcion2 {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .opcion1 {
+    display: none;
+  }
+}
