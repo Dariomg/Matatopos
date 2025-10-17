@@ -4,18 +4,9 @@ h2 {
   text-shadow: 2px 2px 6px #b30000;
   font-family: 'Creepster', cursive, sans-serif;
   margin-bottom: 15px;
-  letter-spacing: 1px;
-  animation: brillo-titulo 2s infinite alternate;
+  animation: parpadeo 1.5s infinite alternate;
 }
 
-@keyframes brillo-titulo {
-  from {
-    text-shadow: 0 0 6px #ff7518, 0 0 10px #b30000;
-  }
-  to {
-    text-shadow: 0 0 14px #ff7518, 0 0 20px #ff0000;
-  }
-}
 .form-container {
   display: flex;
   flex-direction: column;

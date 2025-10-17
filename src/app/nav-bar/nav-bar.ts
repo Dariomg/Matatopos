@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterLink } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [RouterLink, MatToolbarModule, MatIconModule],
+  standalone: true,
+  imports: [RouterLink, MatToolbarModule, MatIconModule, MatSlideToggleModule, CommonModule],
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.css'
 })
 export class NavBar {
 
-  pi:string="pi pi piiiiiiiiii";
+  modoHalloween = false;
 
+  toggleHalloween(estado: boolean) {
+    this.modoHalloween = estado;
+  }
 }
