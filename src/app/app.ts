@@ -7,13 +7,17 @@ import { Matatopos } from './matatopos/matatopos';
 import { Circulo } from './circulo/circulo';
 import { Carrera } from './carrera/carrera';
 import { ListaPersonajes } from './lista-personajes/lista-personajes';
+import { FormularioRegistro } from './formulario-registro/formulario-registro';
 
 bootstrapApplication(ListaPersonajes)
   .catch(err => console.error(err));
 
+bootstrapApplication(FormularioRegistro)
+  .catch(err => console.error(err));
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, Contador, Matatopos, Circulo, Carrera, ListaPersonajes],
+  imports: [RouterOutlet, CommonModule, Contador, Matatopos, Circulo, Carrera, ListaPersonajes, FormularioRegistro],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

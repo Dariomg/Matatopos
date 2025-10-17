@@ -1,3 +1,34 @@
+.semaforo {
+    background-color: black;
+    width: 100px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    padding: 10px;
+    margin: auto;
+}
+
+.luz {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.verde {
+    background-color: green;
+}
+
+.amarillo {
+    background-color: yellow;
+}
+
+.rojo {
+    background-color: red;
+}
+
 .contador {
   text-align: center;
   margin: 20px;
