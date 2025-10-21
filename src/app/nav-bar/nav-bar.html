@@ -1,18 +1,24 @@
 <mat-sidenav-container class="sidenav-container">
-  
-  <mat-sidenav #drawer class="sidenav" mode="side" [opened]="false" [class.halloween]="modoHalloween">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [mode]="isMobile ? 'over' : 'side'"
+    [opened]="!isMobile && sidenavOpened"
+    [class.halloween]="modoHalloween"
+    (backdropClick)="drawer.close()"
+  >
     <mat-toolbar color="primary" class="sidenav-header">
-     Menú
+      Menú
     </mat-toolbar>
 
     <mat-nav-list>
-      <a mat-list-item routerLink="/contador" (click)="drawer.close()">⏱️ Contador</a>
-      <a mat-list-item routerLink="/matatopos" (click)="drawer.close()">🐹 Matatopos</a>
-      <a mat-list-item routerLink="/carrera" (click)="drawer.close()">🏁 Carrera</a>
-      <a mat-list-item routerLink="/circulo" (click)="drawer.close()">⚫ Círculo</a>
-      <a mat-list-item routerLink="/lista-personajes" (click)="drawer.close()">🧙‍♂️ Lista Personajes</a>
-      <a mat-list-item routerLink="/formulario-registro" (click)="drawer.close()">🧾 Formulario</a>
-      <a mat-list-item (click)="drawer.close()">🎮 Juego</a>
+      <a mat-list-item routerLink="/contador" (click)="closeIfMobile(drawer)">⏱️ Contador</a>
+      <a mat-list-item routerLink="/matatopos" (click)="closeIfMobile(drawer)">🐹 Matatopos</a>
+      <a mat-list-item routerLink="/carrera" (click)="closeIfMobile(drawer)">🏁 Carrera</a>
+      <a mat-list-item routerLink="/circulo" (click)="closeIfMobile(drawer)">⚫ Círculo</a>
+      <a mat-list-item routerLink="/lista-personajes" (click)="closeIfMobile(drawer)">🧙‍♂️ Lista Personajes</a>
+      <a mat-list-item routerLink="/formulario-registro" (click)="closeIfMobile(drawer)">🧾 Formulario</a>
+      <a mat-list-item (click)="closeIfMobile(drawer)">🎮 Juego</a>
     </mat-nav-list>
 
     <div class="toggle-container">
@@ -23,8 +29,8 @@
   </mat-sidenav>
 
   <mat-sidenav-content [class.halloween-content]="modoHalloween">
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="drawer.toggle()">
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="drawer.toggle()" class="menu-button">
         <mat-icon>menu</mat-icon>
       </button>
       <span class="titulo">🎃 Fiesta del Castillo</span>
