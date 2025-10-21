@@ -1,23 +1,37 @@
-<mat-toolbar [class.halloween]="modoHalloween" color="primary">
-  <span class="example-spacer"></span>
-  <span class="opcion" routerLink="/contador">Contador</span>
-  <span class="example-spacer"></span>
-  <span class="opcion" routerLink="/matatopos">Matatopos</span>
-  <span class="example-spacer"></span>
-  <span class="opcion" routerLink="/carrera">Carrera</span>
-  <span class="example-spacer"></span>
-  <span class="opcion" routerLink="/circulo">Círculo</span>
-  <span class="example-spacer"></span>
-  <span class="opcion" routerLink="/lista-personajes">Lista Personajes</span>
-  <span class="example-spacer"></span>    
-  <span class="opcion" routerLink="/formulario-registro">Formulario</span>
-  <span class="example-spacer"></span>    
-  <span class="opcion">Juego</span>
-  <span class="example-spacer"></span>
+<mat-sidenav-container class="sidenav-container">
+  
+  <mat-sidenav #drawer class="sidenav" mode="side" [opened]="false" [class.halloween]="modoHalloween">
+    <mat-toolbar color="primary" class="sidenav-header">
+     Menú
+    </mat-toolbar>
 
-  <mat-slide-toggle 
-    color="accent"
-    (change)="toggleHalloween($event.checked)">
-    🎃 Halloween
-  </mat-slide-toggle>
-</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/contador" (click)="drawer.close()">⏱️ Contador</a>
+      <a mat-list-item routerLink="/matatopos" (click)="drawer.close()">🐹 Matatopos</a>
+      <a mat-list-item routerLink="/carrera" (click)="drawer.close()">🏁 Carrera</a>
+      <a mat-list-item routerLink="/circulo" (click)="drawer.close()">⚫ Círculo</a>
+      <a mat-list-item routerLink="/lista-personajes" (click)="drawer.close()">🧙‍♂️ Lista Personajes</a>
+      <a mat-list-item routerLink="/formulario-registro" (click)="drawer.close()">🧾 Formulario</a>
+      <a mat-list-item (click)="drawer.close()">🎮 Juego</a>
+    </mat-nav-list>
+
+    <div class="toggle-container">
+      <mat-slide-toggle color="accent" (change)="toggleHalloween($event.checked)">
+        🎃 Modo Halloween
+      </mat-slide-toggle>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content [class.halloween-content]="modoHalloween">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="titulo">🎃 Fiesta del Castillo</span>
+    </mat-toolbar>
+
+    <div class="contenido">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

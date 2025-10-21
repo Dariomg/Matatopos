@@ -1,37 +1,55 @@
-.example-spacer {
-  flex: 1 1 auto;
+.sidenav-container {
+  height: 100vh;
+  background-color: #121212;
+  color: #fff;
 }
 
-.opcion {
-  cursor: pointer;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+.sidenav {
+  width: 240px;
+  background-color: #222;
+  color: #fff;
 }
 
-.opcion:hover {
-  font-weight: 700;
-  color: #ff7518;
+.sidenav-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
-mat-toolbar.halloween {
-  background: linear-gradient(90deg, #300000, #000);
-  color: #ff7518;
-  box-shadow: 0 0 20px #ff7518;
-  transition: all 0.5s ease;
+.mat-toolbar {
+  display: flex;
+  align-items: center;
 }
 
-mat-toolbar.halloween .opcion:hover {
-  color: #ff0000;
-  text-shadow: 0 0 6px #ff0000;
+.titulo {
+  margin-left: 16px;
+  font-weight: bold;
 }
 
-@media (max-width: 900px) {
-  .opcion2 {
-    display: none;
-  }
+.toggle-container {
+  padding: 1rem;
+  border-top: 1px solid #444;
+  text-align: center;
 }
 
-@media (max-width: 900px) {
-  .opcion1 {
-    display: none;
-  }
+a.mat-list-item {
+  color: #ddd;
+}
+
+a.mat-list-item:hover {
+  background-color: #333;
+  color: #ff6600;
+}
+
+.halloween {
+  background-color: #2b002b !important;
+  color: #ff6600;
+}
+
+.halloween-content {
+  background: linear-gradient(180deg, #1a001a, #330033);
+}
+
+.contenido {
+  padding: 16px;
 }
