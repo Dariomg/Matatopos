@@ -1,0 +1,111 @@
+.kanban-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  color: #fff;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.add-card {
+  width: 60%;
+  background: #222;
+  color: #fff;
+  margin-bottom: 20px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.2);
+}
+
+.kanban-columns {
+  display: flex;
+  flex-direction: row; 
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.kanban-column {
+  background: #2a2a2a;
+  border-radius: 10px;
+  padding: 10px;
+  width: 300px;
+  min-height: 500px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #ffb300;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px rgba(255, 179, 0, 0.4);
+}
+
+.tarea-card {
+  background: #333;
+  color: white;
+  margin-bottom: 12px;
+  cursor: grab;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarea-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(255, 152, 0, 0.4);
+}
+
+.tarea-card.doing {
+  border-left: 4px solid #ff9800;
+}
+
+.tarea-card.done {
+  border-left: 4px solid #4caf50;
+}
+
+.tarea-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.descripcion {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.mat-mdc-input-element {
+  color: #f5f5f5 !important;
+}
+
+.mat-mdc-form-field-label {
+  color: #bbb !important;
+}
+
+textarea.mat-mdc-input-element {
+  color: #f5f5f5 !important;
+}
+
+@media (max-width: 768px) {
+  .add-card {
+    width: 90%;
+  }
+
+  .kanban-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .kanban-column {
+    width: 90%;
+  }
+}

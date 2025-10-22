@@ -9,6 +9,7 @@ import { NavBar } from './nav-bar/nav-bar';
 import { Carrera } from './carrera/carrera';
 import { ListaPersonajes } from './lista-personajes/lista-personajes';
 import { FormularioRegistro } from './formulario-registro/formulario-registro';
+import { KanbanBoard } from './kanban-board/kanban-board';
 
 bootstrapApplication(ListaPersonajes)
   .catch(err => console.error(err));
@@ -18,7 +19,7 @@ bootstrapApplication(FormularioRegistro)
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, Contador, Matatopos, Circulo, NavBar, Carrera, ListaPersonajes, FormularioRegistro],
+  imports: [RouterOutlet, CommonModule, Contador, Matatopos, Circulo, NavBar, Carrera, ListaPersonajes, FormularioRegistro, KanbanBoard],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
