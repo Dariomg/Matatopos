@@ -20,7 +20,7 @@
 
 .kanban-columns {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   gap: 20px;
   justify-content: center;
   align-items: flex-start;

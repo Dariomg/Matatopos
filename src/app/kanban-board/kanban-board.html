@@ -15,78 +15,82 @@
     <button mat-raised-button color="primary" (click)="agregarTarea()">Añadir</button>
   </mat-card>
 
+  <div class="kanban-columns">
+
     <div
-    class="kanban-column"
-    cdkDropList
-    [cdkDropListData]="todo"
-    [cdkDropListConnectedTo]="['doingList', 'doneList']"
-    (cdkDropListDropped)="drop($event)"
-    id="todoList"
+      class="kanban-column"
+      cdkDropList
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="['doingList', 'doneList']"
+      (cdkDropListDropped)="drop($event)"
+      id="todoList"
     >
-    <h2>To Do ({{ todo.length }})</h2>
-    <div class="kanban-list">
+      <h2>To Do ({{ todo.length }})</h2>
+      <div class="kanban-list">
         <mat-card *ngFor="let tarea of todo" cdkDrag class="tarea-card">
-        <div class="tarea-header">
+          <div class="tarea-header">
             <h4>{{ tarea.titulo }}</h4>
             <button mat-icon-button color="warn" (click)="eliminarTarea(todo, tarea)">
-            <mat-icon>delete</mat-icon>
+              <mat-icon>delete</mat-icon>
             </button>
-        </div>
-        <button mat-button color="accent" (click)="toggleDescripcion(tarea.id)">
+          </div>
+          <button mat-button color="accent" (click)="toggleDescripcion(tarea.id)">
             {{ mostrarDescripcion[tarea.id] ? 'Ocultar' : 'Ver' }} descripción
-        </button>
-        <p *ngIf="mostrarDescripcion[tarea.id]" class="descripcion">{{ tarea.descripcion }}</p>
+          </button>
+          <p *ngIf="mostrarDescripcion[tarea.id]" class="descripcion">{{ tarea.descripcion }}</p>
         </mat-card>
-    </div>
+      </div>
     </div>
 
     <div
-    class="kanban-column"
-    cdkDropList
-    [cdkDropListData]="doing"
-    [cdkDropListConnectedTo]="['todoList', 'doneList']"
-    (cdkDropListDropped)="drop($event)"
-    id="doingList"
+      class="kanban-column"
+      cdkDropList
+      [cdkDropListData]="doing"
+      [cdkDropListConnectedTo]="['todoList', 'doneList']"
+      (cdkDropListDropped)="drop($event)"
+      id="doingList"
     >
-    <h2>Doing ({{ doing.length }})</h2>
-    <div class="kanban-list">
+      <h2>Doing ({{ doing.length }})</h2>
+      <div class="kanban-list">
         <mat-card *ngFor="let tarea of doing" cdkDrag class="tarea-card doing">
-        <div class="tarea-header">
+          <div class="tarea-header">
             <h4>{{ tarea.titulo }}</h4>
             <button mat-icon-button color="warn" (click)="eliminarTarea(doing, tarea)">
-            <mat-icon>delete</mat-icon>
+              <mat-icon>delete</mat-icon>
             </button>
-        </div>
-        <button mat-button color="accent" (click)="toggleDescripcion(tarea.id)">
+          </div>
+          <button mat-button color="accent" (click)="toggleDescripcion(tarea.id)">
             {{ mostrarDescripcion[tarea.id] ? 'Ocultar' : 'Ver' }} descripción
-        </button>
-        <p *ngIf="mostrarDescripcion[tarea.id]" class="descripcion">{{ tarea.descripcion }}</p>
+          </button>
+          <p *ngIf="mostrarDescripcion[tarea.id]" class="descripcion">{{ tarea.descripcion }}</p>
         </mat-card>
-    </div>
+      </div>
     </div>
 
     <div
-    class="kanban-column"
-    cdkDropList
-    [cdkDropListData]="done"
-    [cdkDropListConnectedTo]="['todoList', 'doingList']"
-    (cdkDropListDropped)="drop($event)"
-    id="doneList"
+      class="kanban-column"
+      cdkDropList
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="['todoList', 'doingList']"
+      (cdkDropListDropped)="drop($event)"
+      id="doneList"
     >
-    <h2>Done ({{ done.length }})</h2>
-    <div class="kanban-list">
+      <h2>Done ({{ done.length }})</h2>
+      <div class="kanban-list">
         <mat-card *ngFor="let tarea of done" cdkDrag class="tarea-card done">
-        <div class="tarea-header">
+          <div class="tarea-header">
             <h4>{{ tarea.titulo }}</h4>
             <button mat-icon-button color="warn" (click)="eliminarTarea(done, tarea)">
-            <mat-icon>delete</mat-icon>
+              <mat-icon>delete</mat-icon>
             </button>
-        </div>
-        <button mat-button color="accent" (click)="toggleDescripcion(tarea.id)">
+          </div>
+          <button mat-button color="accent" (click)="toggleDescripcion(tarea.id)">
             {{ mostrarDescripcion[tarea.id] ? 'Ocultar' : 'Ver' }} descripción
-        </button>
-        <p *ngIf="mostrarDescripcion[tarea.id]" class="descripcion">{{ tarea.descripcion }}</p>
+          </button>
+          <p *ngIf="mostrarDescripcion[tarea.id]" class="descripcion">{{ tarea.descripcion }}</p>
         </mat-card>
+      </div>
     </div>
-    </div>
+
+  </div>
 </div>
