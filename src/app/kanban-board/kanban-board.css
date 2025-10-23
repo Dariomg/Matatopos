@@ -49,6 +49,28 @@ h2 {
   text-shadow: 0 0 5px rgba(255, 179, 0, 0.4);
 }
 
+.tarea-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.tarea-header h4 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
+}
+
+.tarea-header button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .tarea-card {
   background: #333;
   color: white;
