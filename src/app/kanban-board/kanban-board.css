@@ -41,6 +41,21 @@
   flex-direction: column;
 }
 
+.kanban-column.todo h2 {
+  color: #03a9f4;
+  text-shadow: 0 0 6px rgba(3, 169, 244, 0.5);
+}
+
+.kanban-column.doing h2 {
+  color: #ff9800;
+  text-shadow: 0 0 6px rgba(255, 152, 0, 0.5);
+}
+
+.kanban-column.done h2 {
+  color: #4caf50;
+  text-shadow: 0 0 6px rgba(76, 175, 80, 0.5);
+}
+
 h2 {
   text-align: center;
   margin-bottom: 15px;
@@ -83,6 +98,10 @@ h2 {
 .tarea-card:hover {
   transform: scale(1.03);
   box-shadow: 0 0 10px rgba(255, 152, 0, 0.4);
+}
+
+.tarea-card.todo {
+  border-left: 4px solid #2196f3;
 }
 
 .tarea-card.doing {

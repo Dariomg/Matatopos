@@ -18,7 +18,7 @@
   <div class="kanban-columns">
 
     <div
-      class="kanban-column"
+      class="kanban-column todo"
       cdkDropList
       [cdkDropListData]="todo"
       [cdkDropListConnectedTo]="['doingList', 'doneList']"
@@ -27,7 +27,7 @@
     >
       <h2>To Do ({{ todo.length }})</h2>
       <div class="kanban-list">
-        <mat-card *ngFor="let tarea of todo" cdkDrag class="tarea-card">
+        <mat-card *ngFor="let tarea of todo" cdkDrag class="tarea-card todo">
           <div class="tarea-header">
             <h4>{{ tarea.titulo }}</h4>
             <button mat-icon-button color="warn" (click)="eliminarTarea(todo, tarea)">
@@ -43,7 +43,7 @@
     </div>
 
     <div
-      class="kanban-column"
+      class="kanban-column doing"
       cdkDropList
       [cdkDropListData]="doing"
       [cdkDropListConnectedTo]="['todoList', 'doneList']"
@@ -68,7 +68,7 @@
     </div>
 
     <div
-      class="kanban-column"
+      class="kanban-column done"
       cdkDropList
       [cdkDropListData]="done"
       [cdkDropListConnectedTo]="['todoList', 'doingList']"
