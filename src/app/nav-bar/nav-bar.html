@@ -5,6 +5,7 @@
     [mode]="isMobile ? 'over' : 'side'"
     [opened]="!isMobile && sidenavOpened"
     [class.halloween]="modoHalloween"
+    [class.navidad]="modoNavidad"
     (backdropClick)="drawer.close()"
   >
     <mat-toolbar color="primary" class="sidenav-header">
@@ -15,25 +16,44 @@
       <a mat-list-item routerLink="/contador" (click)="closeIfMobile(drawer)">⏱️ Contador</a>
       <a mat-list-item routerLink="/matatopos" (click)="closeIfMobile(drawer)">🐹 Matatopos</a>
       <a mat-list-item routerLink="/carrera" (click)="closeIfMobile(drawer)">🏁 Carrera</a>
-      <a mat-list-item routerLink="/circulo" (click)="closeIfMobile(drawer)">⚫ Círculo</a>
+      <a mat-list-item routerLink="/circulo" (click)="closeIfMobile(drawer)">🎥 Animación</a>
       <a mat-list-item routerLink="/lista-personajes" (click)="closeIfMobile(drawer)">🐲 Lista Personajes</a>
       <a mat-list-item routerLink="/formulario-registro" (click)="closeIfMobile(drawer)">🧾 Formulario</a>
       <a mat-list-item routerLink="/kanban-board" (click)="closeIfMobile(drawer)">🗂️ Kanban</a>
     </mat-nav-list>
 
     <div class="toggle-container">
-      <mat-slide-toggle color="accent" (change)="toggleHalloween($event.checked)">
+      <mat-slide-toggle
+        color="accent"
+        [(ngModel)]="modoHalloween"
+        (change)="toggleHalloween($event.checked)"
+      >
         🎃 Modo Halloween
+      </mat-slide-toggle>
+    </div>
+
+    <div class="toggle-container">
+      <mat-slide-toggle
+        color="warn"
+        [(ngModel)]="modoNavidad"
+        (change)="toggleNavidad($event.checked)"
+      >
+        🎄 Modo Navidad
       </mat-slide-toggle>
     </div>
   </mat-sidenav>
 
-  <mat-sidenav-content [class.halloween-content]="modoHalloween">
+  <mat-sidenav-content
+    [class.halloween-content]="modoHalloween"
+    [class.navidad-content]="modoNavidad"
+  >
     <mat-toolbar color="primary" class="toolbar">
       <button mat-icon-button (click)="drawer.toggle()" class="menu-button">
         <mat-icon>menu</mat-icon>
       </button>
-      <span class="titulo">🎃 Fiesta del Castillo</span>
+      <span class="titulo">
+        {{ modoHalloween ? '🎃 Fiesta del Castillo' : modoNavidad ? '🎄 Navidad Mágica' : '🏰 Bienvenido' }}
+      </span>
     </mat-toolbar>
 
     <div class="contenido">

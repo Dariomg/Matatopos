@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { Contador } from './contador/contador';
 import { Matatopos } from './matatopos/matatopos';
-import { Circulo } from './circulo/circulo';
+import { CirculoComponent } from './circulo/circulo';
 import { NavBar } from './nav-bar/nav-bar';
 import { Carrera } from './carrera/carrera';
 import { ListaPersonajes } from './lista-personajes/lista-personajes';
@@ -19,7 +19,7 @@ bootstrapApplication(FormularioRegistro)
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, Contador, Matatopos, Circulo, NavBar, Carrera, ListaPersonajes, FormularioRegistro, KanbanBoard],
+  imports: [RouterOutlet, CommonModule, Contador, Matatopos, CirculoComponent, NavBar, Carrera, ListaPersonajes, FormularioRegistro, KanbanBoard],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

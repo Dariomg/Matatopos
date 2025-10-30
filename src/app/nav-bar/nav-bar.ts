@@ -7,12 +7,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
+import { HalloweenService } from '../services/halloween';
+import { NavidadService } from '../services/navidad';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     RouterLink,
     RouterOutlet,
     MatSidenavModule,
@@ -27,10 +31,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 })
 export class NavBar {
   modoHalloween = false;
+  modoNavidad = false;
   isMobile = false;
   sidenavOpened = true;
 
-  constructor() {
+  constructor(
+    private halloweenService: HalloweenService,
+    private navidadService: NavidadService
+  ) {
     this.checkScreenSize();
   }
 
@@ -42,6 +50,24 @@ export class NavBar {
 
   toggleHalloween(estado: boolean) {
     this.modoHalloween = estado;
+
+    if (estado) {
+      this.modoNavidad = false;
+      this.navidadService.toggleModo(false);
+    }
+
+    this.halloweenService.toggleModo(estado);
+  }
+
+  toggleNavidad(estado: boolean) {
+    this.modoNavidad = estado;
+
+    if (estado) {
+      this.modoHalloween = false;
+      this.halloweenService.toggleModo(false);
+    }
+
+    this.navidadService.toggleModo(estado);
   }
 
   closeIfMobile(drawer: any) {
