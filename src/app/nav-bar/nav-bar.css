@@ -53,19 +53,34 @@
 }
 
 .halloween {
-  background-color: #751a75;
-  color: #ff6600;
+  background-color: #ffd180;
+  background-image: linear-gradient(180deg, #fff3e0, #ffcc80, #fb8c00);
+  color: #000;
+}
+
+.halloween .sidenav-header {
+  color: #bf360c;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+.halloween .mat-nav-list a.mat-list-item {
+  color: #212121;
+}
+
+.halloween .mat-nav-list a.mat-list-item:hover {
+  background-color: #ffb300;
+  color: #000;
+  font-weight: 500;
 }
 
 .halloween-content {
-  background: linear-gradient(180deg, #1a001a, #330033);
-  color: #fff;
+  background: linear-gradient(180deg, #fff8e1, #ffe0b2, #ffb74d);
+  color: #000;
 }
 
 .navidad {
   background-color: #1b5e20;
   color: #ffeb3b;
-  background-image: radial-gradient(circle, #2e7d32 0%, #1b5e20 100%);
 }
 
 .navidad-content {
