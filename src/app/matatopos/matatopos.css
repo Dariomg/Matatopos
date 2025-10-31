@@ -5,6 +5,18 @@
   padding: 1rem;
 }
 
+.container.halloween h1,
+.container.halloween p {
+  color: #bf360c;
+  text-shadow: 0 0 4px #ffb74d;
+}
+
+.container.navidad h1,
+.container.navidad p {
+  color: #e53935;
+  text-shadow: 0 0 6px #ffeb3b;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -28,19 +40,20 @@
 
 .cell.active {
   background-color: #c8a165;
-  background-image: url('/topo.png');
   background-position: center;
   background-size: cover;
 }
 
 .topo {
-  background-color: brown;
   border-radius: 50%;
-  width: 60%;
-  height: 60%;
+  width: 80%;
+  height: 80%;
   position: absolute;
-  top: 20%;
-  left: 20%;
+  top: 10%;
+  left: 10%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   animation: pop 0.2s ease;
 }
 

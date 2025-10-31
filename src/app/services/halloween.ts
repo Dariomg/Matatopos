@@ -1,12 +1,18 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HalloweenService {
-  modoHalloween = signal(false);
+  private modoHalloweenActivo = new BehaviorSubject<boolean>(false);
+  modoHalloween$ = this.modoHalloweenActivo.asObservable();
 
   toggleModo(estado: boolean) {
-    this.modoHalloween.set(estado);
+    this.modoHalloweenActivo.next(estado);
+  }
+
+  getModoActual(): boolean {
+    return this.modoHalloweenActivo.value;
   }
 }
