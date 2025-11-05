@@ -55,9 +55,9 @@ export class Matatopos implements OnInit {
   }
 
   get topoImage(): string {
-    if (this.modoHalloween) return '/calabaza.png';
-    if (this.modoNavidad) return '/muñeco.png';
-    return '/topo.png';
+    if (this.modoHalloween) return 'imagenes-matatopos/calabaza.png';
+    if (this.modoNavidad) return 'imagenes-matatopos/muñeco.png';
+    return 'imagenes-matatopos/topo.png';
   }
 
   get modoClase(): string {

@@ -1,19 +1,18 @@
-<div class="container" [ngClass]="modoClase">
+<div class="container"
+     [ngClass]="{
+       'normal': !modoHalloween && !modoNavidad,
+       'halloween': modoHalloween,
+       'navidad': modoNavidad
+     }">
   <h1>Matatopos</h1>
   <p>Puntos: {{ score }}</p>
-
   <div class="grid">
     <div
       class="cell"
-      *ngFor="let index of [].constructor(gridSize); let i = index"
+      *ngFor="let cell of [].constructor(gridSize); let i = index"
       [class.active]="activeIndex === i"
       (click)="hitTopo(i)"
-    >
-      <div
-        class="topo"
-        *ngIf="activeIndex === i"
-        [style.backgroundImage]="'url(' + topoImage + ')'"
-      ></div>
+      [style.backgroundImage]="activeIndex === i ? 'url(' + topoImage + ')' : 'none'">
     </div>
   </div>
 </div>
