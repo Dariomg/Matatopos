@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { HalloweenService } from '../services/halloween';
+import { NavidadService } from '../services/navidad';
 
 interface Tarea {
   id: number;
@@ -39,8 +41,26 @@ export class KanbanBoard implements OnInit {
   nuevaTarea: Tarea = { id: 0, titulo: '', descripcion: '' };
   mostrarDescripcion: { [key: number]: boolean } = {};
 
+  modoHalloween = false;
+  modoNavidad = false;
+
+  constructor(
+    private halloweenService: HalloweenService,
+    private navidadService: NavidadService
+  ) {}
+
   ngOnInit(): void {
     this.cargarDesdeLocalStorage();
+
+    this.halloweenService.modoHalloween$.subscribe((estado) => {
+      this.modoHalloween = estado;
+      if (estado) this.modoNavidad = false;
+    });
+
+    this.navidadService.modoNavidad$.subscribe((estado) => {
+      this.modoNavidad = estado;
+      if (estado) this.modoHalloween = false;
+    });
   }
 
   agregarTarea() {
@@ -70,8 +90,8 @@ export class KanbanBoard implements OnInit {
   }
 
   drop(event: CdkDragDrop<Tarea[]>) {
-  if (event.previousContainer === event.container) {
-    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(
         event.previousContainer.data,

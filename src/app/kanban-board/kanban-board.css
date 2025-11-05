@@ -136,6 +136,39 @@ textarea.mat-mdc-input-element {
   color: #f5f5f5 !important;
 }
 
+.modo-halloween .add-card {
+  background: #2b1a00;
+  border: 1px solid #ff9100;
+  box-shadow: 0 0 10px rgba(255, 140, 0, 0.6);
+}
+
+.modo-halloween .kanban-column {
+  background: #1a0d00;
+  border: 1px solid #ff9100;
+}
+
+.modo-halloween .tarea-card {
+  background: #2b1600;
+  border-left-color: #ff6f00 !important;
+}
+
+.modo-navidad .add-card {
+  background: #006400;
+  border: 1px solid #ff0000;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.modo-navidad .kanban-column {
+  background: #004d00;
+  border: 1px solid #ff0000;
+}
+
+.modo-navidad .tarea-card {
+  background: #006600;
+  border-left-color: #ff0000 !important;
+}
+
+
 @media (max-width: 768px) {
   .add-card {
     width: 90%;

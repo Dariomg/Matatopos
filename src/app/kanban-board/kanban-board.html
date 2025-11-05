@@ -1,4 +1,8 @@
-<div class="kanban-container">
+<div class="kanban-container"
+     [ngClass]="{
+       'modo-halloween': modoHalloween,
+       'modo-navidad': modoNavidad
+     }">
     
   <mat-card class="add-card">
     <h3>Añadir nueva tarea</h3>
