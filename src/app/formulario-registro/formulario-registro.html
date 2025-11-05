@@ -1,58 +1,121 @@
-<h2>🎃 Fiesta de Halloween - Registro de Invitados 🎃</h2>
+<h2
+  [ngClass]="{
+    'titulo-normal': !modoHalloween && !modoNavidad,
+    'titulo-halloween': modoHalloween,
+    'titulo-navidad': modoNavidad
+  }"
+>
+  {{ tituloFormulario }}
+</h2>
 
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form-container">
-
+<form
+  [formGroup]="formulario"
+  (ngSubmit)="onSubmit()"
+  class="form-container"
+  [ngClass]="{
+    'normal': !modoHalloween && !modoNavidad,
+    'halloween': modoHalloween,
+    'navidad': modoNavidad
+  }"
+>
   <label for="nombre">Nombre:</label>
-  <input id="nombre" formControlName="nombre"
-         [class.invalid]="f['nombre'].invalid && f['nombre'].touched" placeholder="Tu nombre terrorífico" />
+  <input
+    id="nombre"
+    formControlName="nombre"
+    [class.invalid]="f['nombre'].invalid && f['nombre'].touched"
+    [placeholder]="placeholderNombre"
+  />
   <small class="error">
-    @if (f['nombre'].hasError('required') && f['nombre'].touched) { 👻 Este campo da más miedo vacío, ¡rellénalo! }
-    @if (f['nombre'].hasError('minlength') && f['nombre'].touched) { 👻 El nombre es demasiado corto, ¡da miedo! }
+    @if (f['nombre'].hasError('required') && f['nombre'].touched) {
+      {{ errorNombreVacio }}
+    }
+    @if (f['nombre'].hasError('minlength') && f['nombre'].touched) {
+      {{ errorNombreCorto }}
+    }
   </small>
 
   <label for="email">Email:</label>
-  <input id="email" formControlName="email"
-         [class.invalid]="f['email'].invalid && f['email'].touched" placeholder="correo@maldito.com" />
+  <input
+    id="email"
+    formControlName="email"
+    [class.invalid]="f['email'].invalid && f['email'].touched"
+    [placeholder]="placeholderEmail"
+  />
   <small class="error">
-    @if (f['email'].hasError('required') && f['email'].touched) { 👻 Este campo da más miedo vacío, ¡rellénalo! }
-    @if (f['email'].hasError('email') && f['email'].touched) { 🩸 Ese correo parece maldito… revisa el formato. }
+    @if (f['email'].hasError('required') && f['email'].touched) {
+      {{ errorEmailVacio }}
+    }
+    @if (f['email'].hasError('email') && f['email'].touched) {
+      {{ errorEmailFormato }}
+    }
   </small>
 
   <label for="tipoInvitado">Tipo de invitado:</label>
-  <select id="tipoInvitado" formControlName="tipoInvitado"
-          [class.invalid]="f['tipoInvitado'].invalid && f['tipoInvitado'].touched">
+  <select
+    id="tipoInvitado"
+    formControlName="tipoInvitado"
+    [class.invalid]="f['tipoInvitado'].invalid && f['tipoInvitado'].touched"
+  >
     <option value="">Selecciona tipo de invitado</option>
-    <option *ngFor="let tipo of tiposInvitado" [value]="tipo">{{tipo}}</option>
+    <option *ngFor="let tipo of tiposInvitado" [value]="tipo">{{ tipo }}</option>
   </select>
   <small class="error">
-    @if (f['tipoInvitado'].hasError('required') && f['tipoInvitado'].touched) { 👻 Debes elegir un tipo de invitado }
+    @if (f['tipoInvitado'].hasError('required') && f['tipoInvitado'].touched) {
+      {{ errorTipoInvitado }}
+    }
   </small>
 
-  <label for="disfraz">Disfraz:</label>
-  <input id="disfraz" formControlName="disfraz"
-         [class.invalid]="f['disfraz'].invalid && f['disfraz'].touched" placeholder="Tu disfraz" />
+  <label for="disfraz">{{ labelExtra }}</label>
+  <input
+    id="disfraz"
+    formControlName="disfraz"
+    [class.invalid]="f['disfraz'].invalid && f['disfraz'].touched"
+    [placeholder]="placeholderExtra"
+  />
   <small class="error">
-    @if (f['disfraz'].hasError('required') && f['disfraz'].touched) { 👻 Este campo da más miedo vacío, ¡rellénalo! }
+    @if (f['disfraz'].hasError('required') && f['disfraz'].touched) {
+      {{ errorExtra }}
+    }
   </small>
 
   <label for="fechaLlegada">Fecha de llegada:</label>
-  <input id="fechaLlegada" type="date" formControlName="fechaLlegada"
-         [class.invalid]="f['fechaLlegada'].invalid && f['fechaLlegada'].touched" />
+  <input
+    id="fechaLlegada"
+    type="date"
+    formControlName="fechaLlegada"
+    [class.invalid]="f['fechaLlegada'].invalid && f['fechaLlegada'].touched"
+  />
   <small class="error">
-    @if (f['fechaLlegada'].hasError('required') && f['fechaLlegada'].touched) { 👻 Necesitamos saber cuándo llegarás }
+    @if (f['fechaLlegada'].hasError('required') && f['fechaLlegada'].touched) {
+      {{ errorFecha }}
+    }
   </small>
 
   <label class="check">
     <input type="checkbox" formControlName="aceptaReglas" />
-    Prometo no morder a los demás invitados
+    {{ textoReglas }}
   </label>
   <small class="error">
-    @if (f['aceptaReglas'].hasError('required') && f['aceptaReglas'].touched) { 👻 Debes aceptar las reglas para poder entrar }
+    @if (f['aceptaReglas'].hasError('required') && f['aceptaReglas'].touched) {
+      {{ errorReglas }}
+    }
   </small>
 
   <button type="submit">Registrar</button>
 </form>
 
-<div class="exito" *ngIf="mensajeExito">{{mensajeExito}}</div>
+<div class="exito" *ngIf="mensajeExito">{{ mensajeExito }}</div>
 
-<div class="contador">{{mensajeCuentaAtras}}</div>
+<div
+  class="contador halloween-contador"
+  *ngIf="modoHalloween && mensajeCuentaAtras"
+>
+  {{ mensajeCuentaAtras }}
+</div>
+
+<div
+  class="contador navidad-contador"
+  *ngIf="modoNavidad && mensajeCuentaAtras"
+>
+  {{ mensajeCuentaAtras }}
+</div>
