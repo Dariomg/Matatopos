@@ -1,10 +1,22 @@
-<div class="semaforo">
-    <div class="luz verde"></div>
-    <div class="luz amarillo"></div>
-    <div class="luz rojo"></div>
+<div
+  class="semaforo"
+  [ngClass]="{
+    halloween: modoHalloween,
+    navidad: modoNavidad
+  }"
+>
+  <div class="luz rojo" [class.active]="currentLight === 'rojo'"></div>
+  <div class="luz amarillo" [class.active]="currentLight === 'amarillo'"></div>
+  <div class="luz verde" [class.active]="currentLight === 'verde'"></div>
 </div>
 
-<div class="contador">
+<div
+  class="contador"
+  [ngClass]="{
+    halloween: modoHalloween,
+    navidad: modoNavidad
+  }"
+>
   <h2>Contador: {{ contador }}</h2>
   <button mat-raised-button color="warn" (click)="disminuir()">-</button>
   <button mat-raised-button color="primary" (click)="aumentar()">+</button>
