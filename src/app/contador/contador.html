@@ -18,6 +18,13 @@
   }"
 >
   <h2>Contador: {{ contador }}</h2>
-  <button mat-raised-button color="warn" (click)="disminuir()">-</button>
-  <button mat-raised-button color="primary" (click)="aumentar()">+</button>
+
+  <div class="botones">
+    <button mat-raised-button color="warn" (click)="disminuir()">-</button>
+    <button mat-raised-button color="primary" (click)="aumentar()">+</button>
+  </div>
+
+  <div class="boton-reset">
+    <button mat-raised-button color="accent" (click)="resetear()">🔄 Reset</button>
+  </div>
 </div>

@@ -9,8 +9,14 @@
   border-radius: 20px;
   padding: 12px;
   margin: auto;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1);
+  animation: encendido 0.8s ease;
+}
+
+@keyframes encendido {
+  0% { filter: brightness(0.6); transform: scale(0.9); }
+  100% { filter: brightness(1); transform: scale(1); }
 }
 
 .luz {
@@ -19,7 +25,7 @@
   border-radius: 50%;
   opacity: 0.25;
   filter: brightness(0.3);
-  transition: opacity 0.4s ease, filter 0.4s ease, box-shadow 0.3s ease;
+  transition: opacity 0.4s ease, filter 0.4s ease, box-shadow 0.3s ease, transform 0.2s ease;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -29,46 +35,23 @@
   transform: scale(1.1);
 }
 
-.luz.rojo {
-  background-color: #f44336;
-}
+.luz.rojo { background-color: #f44336; }
+.luz.amarillo { background-color: #ffeb3b; }
+.luz.verde { background-color: #4caf50; }
 
-.luz.amarillo {
-  background-color: #ffeb3b;
-}
-
-.luz.verde {
-  background-color: #4caf50;
-}
-
-.luz.rojo.active {
-  box-shadow: 0 0 25px #f44336, 0 0 50px #ff1744;
-}
-
-.luz.amarillo.active {
-  box-shadow: 0 0 25px #ffeb3b, 0 0 50px #fff176;
-}
-
-.luz.verde.active {
-  box-shadow: 0 0 25px #4caf50, 0 0 50px #69f0ae;
-}
+.luz.rojo.active { box-shadow: 0 0 25px #f44336, 0 0 50px #ff1744; }
+.luz.amarillo.active { box-shadow: 0 0 25px #ffeb3b, 0 0 50px #fff176; }
+.luz.verde.active { box-shadow: 0 0 25px #4caf50, 0 0 50px #69f0ae; }
 
 .semaforo.halloween {
   background: linear-gradient(180deg, #ffb74d, #f57c00);
   border: 3px solid #4e342e;
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
 }
 
-.semaforo.halloween .luz.rojo {
-  background-color: #d84315;
-}
-
-.semaforo.halloween .luz.amarillo {
-  background-color: #ffcc80;
-}
-
-.semaforo.halloween .luz.verde {
-  background-color: #ff9100;
-}
+.semaforo.halloween .luz.rojo { background-color: #d84315; }
+.semaforo.halloween .luz.amarillo { background-color: #ffcc80; }
+.semaforo.halloween .luz.verde { background-color: #ff9100; }
 
 .semaforo.halloween .luz.active {
   opacity: 1;
@@ -90,19 +73,12 @@
 .semaforo.navidad {
   background: linear-gradient(180deg, #1b5e20, #388e3c);
   border: 3px solid #c62828;
+  box-shadow: 0 0 20px rgba(200, 50, 50, 0.6);
 }
 
-.semaforo.navidad .luz.rojo {
-  background-color: #e53935;
-}
-
-.semaforo.navidad .luz.amarillo {
-  background-color: #ffee58;
-}
-
-.semaforo.navidad .luz.verde {
-  background-color: #4caf50;
-}
+.semaforo.navidad .luz.rojo { background-color: #e53935; }
+.semaforo.navidad .luz.amarillo { background-color: #ffee58; }
+.semaforo.navidad .luz.verde { background-color: #4caf50; }
 
 .semaforo.navidad .luz.active {
   opacity: 1;
@@ -124,6 +100,7 @@
 .contador {
   text-align: center;
   margin: 20px;
+  transition: color 0.3s ease;
 }
 
 .contador.halloween h2 {
@@ -138,6 +115,45 @@
 
 button {
   margin: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.boton-reset {
+  margin-top: 10px;
+}
+
+.boton-reset button {
+  background-color: #607d8b;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 6px 16px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.boton-reset button:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.contador.halloween .boton-reset button {
+  background-color: #ff9100;
+  color: #3e2723;
+}
+
+.contador.navidad .boton-reset button {
+  background-color: #c62828;
+  color: #fff;
 }
 
 @media (max-width: 500px) {
@@ -149,5 +165,9 @@ button {
   .luz {
     width: 60px;
     height: 60px;
+  }
+
+  .contador h2 {
+    font-size: 1.2rem;
   }
 }

@@ -47,4 +47,9 @@ export class Contador {
     const nextIndex = (currentIndex + 1) % sequence.length;
     this.currentLight = sequence[nextIndex];
   }
+
+  resetear() {
+    this.contador = 0;
+    this.currentLight = 'rojo';
+  }
 }
