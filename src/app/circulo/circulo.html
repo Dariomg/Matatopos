@@ -1,4 +1,13 @@
-<div class="container">
-  <h2>Circulo</h2>
-  <div class="circulo"></div>
+<div
+  class="container"
+  [ngClass]="{
+    'modo-halloween': modoHalloween,
+    'modo-navidad': modoNavidad
+  }"
+>
+  <h2>{{ titulo }}</h2>
+
+  <div class="circulo-wrapper">
+    <div class="circulo"></div>
+  </div>
 </div>
