@@ -21,16 +21,14 @@ export class CirculoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.halloweenService.modoHalloween$.subscribe((v) => {
+    this.halloweenService.modoHalloween$.subscribe(v => {
       this.modoHalloween = v;
       this.actualizarTitulo();
     });
-
-    this.navidadService.modoNavidad$.subscribe((v) => {
+    this.navidadService.modoNavidad$.subscribe(v => {
       this.modoNavidad = v;
       this.actualizarTitulo();
     });
-
     this.actualizarTitulo();
   }
 

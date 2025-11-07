@@ -8,6 +8,13 @@
   <h2>{{ titulo }}</h2>
 
   <div class="circulo-wrapper">
-    <div class="circulo"></div>
+    <div
+      class="circulo"
+      [ngClass]="{
+        'animacion-halloween': modoHalloween,
+        'animacion-navidad': modoNavidad,
+        'animacion-normal': !modoHalloween && !modoNavidad
+      }"
+    ></div>
   </div>
 </div>

@@ -29,63 +29,93 @@ h2 {
 .circulo {
   width: clamp(80px, 20vw, 150px);
   height: clamp(80px, 20vw, 150px);
-  background-color: #3f51b5;
   border-radius: 50%;
-  animation: crecerReducir 2s infinite ease-in-out;
-  box-shadow: 0 0 20px rgba(63, 81, 181, 0.6);
-  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+  transition: all 0.5s ease;
 }
 
-.container {
-  color: #f0f0f0;
-}
-
-.modo-halloween {
-  color: orange;
+.circulo.animacion-normal {
+  background-color: #3f51b5;
+  animation: respirar 2.5s infinite ease-in-out;
+  box-shadow: 0 0 20px rgba(63, 81, 181, 0.5);
 }
 
 .modo-halloween h2 {
   color: orange;
-  text-shadow: 0 0 15px red, 0 0 25px orange;
+  text-shadow: 0 0 20px red, 0 0 40px orange;
 }
 
-.modo-halloween .circulo {
-  background-color: orange;
+.circulo.animacion-halloween {
+  background: radial-gradient(circle at 30% 30%, orange, darkred);
   box-shadow: 0 0 30px 10px orange;
-  animation: crecerReducirHalloween 2s infinite ease-in-out;
-}
-
-.modo-navidad {
-  color: #00ffff;
+  animation: calabaza 3s infinite ease-in-out;
 }
 
 .modo-navidad h2 {
   color: #00ffff;
-  text-shadow: 0 0 15px #00ffff, 0 0 30px white;
+  text-shadow: 0 0 20px #00ffff, 0 0 40px white;
 }
 
-.modo-navidad .circulo {
-  background-color: #00bfff;
-  box-shadow: 0 0 30px 10px #00ffff;
-  animation: crecerReducirNavidad 2s infinite ease-in-out;
+.circulo.animacion-navidad {
+  background: radial-gradient(circle at 30% 30%, #00bfff, #005f8a);
+  box-shadow: 0 0 30px 15px #00ffff;
+  animation: bolaNavidad 2.5s infinite ease-in-out;
 }
 
-@keyframes crecerReducir {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.5); }
-  100% { transform: scale(1); }
+@keyframes respirar {
+  0% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.4); filter: brightness(1.2); }
+  100% { transform: scale(1); filter: brightness(1); }
 }
 
-@keyframes crecerReducirHalloween {
-  0% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.5) rotate(5deg); filter: brightness(1.3); }
-  100% { transform: scale(1) rotate(0deg); }
+@keyframes calabaza {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+  25% {
+    transform: scale(1.3) rotate(-10deg);
+    filter: brightness(1.3);
+  }
+  50% {
+    transform: scale(0.9) rotate(10deg);
+    filter: brightness(0.9);
+  }
+  75% {
+    transform: scale(1.2) rotate(-8deg);
+    filter: brightness(1.4);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
 }
 
-@keyframes crecerReducirNavidad {
-  0% { transform: scale(1); filter: hue-rotate(0deg); }
-  50% { transform: scale(1.5); filter: hue-rotate(90deg) brightness(1.3); }
-  100% { transform: scale(1); filter: hue-rotate(0deg); }
+@keyframes bolaNavidad {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 20px 5px #00ffff;
+    filter: brightness(1);
+  }
+  25% {
+    transform: scale(1.2);
+    box-shadow: 0 0 40px 20px #ffffff;
+    filter: brightness(1.4);
+  }
+  50% {
+    transform: scale(1);
+    box-shadow: 0 0 30px 10px #00ffff;
+    filter: brightness(1);
+  }
+  75% {
+    transform: scale(1.3);
+    box-shadow: 0 0 50px 25px #b3ffff;
+    filter: brightness(1.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px 5px #00ffff;
+    filter: brightness(1);
+  }
 }
 
 @media (max-width: 600px) {
