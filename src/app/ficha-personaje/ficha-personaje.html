@@ -1,4 +1,10 @@
-<div class="ficha" [ngStyle]="{ 'background-color': getColorFondo() }">
+<div class="ficha"
+  [ngClass]="{
+    'modo-halloween': modoHalloween,
+    'modo-navidad': modoNavidad
+  }"
+  [ngStyle]="{ 'background-color': getColorFondo() }"
+>
   <img [src]="personaje.imagen" [alt]="personaje.nombre">
   <h3>{{ personaje.nombre }}</h3>
   <p><strong>Raza:</strong> {{ personaje.raza }}</p>

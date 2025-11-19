@@ -1,7 +1,18 @@
-<h2>Lista de Personajes</h2>
+<div class="container"
+  [ngClass]="{
+    'modo-halloween': modoHalloween,
+    'modo-navidad': modoNavidad
+  }"
+>
+  <h2>{{ titulo }}</h2>
 
-<div class="grid">
-  @for (personaje of personajes; track personaje.nombre) {
-    <app-ficha-personaje [personaje]="personaje"></app-ficha-personaje>
-  }
+  <div class="grid">
+    @for (personaje of personajes; track personaje.nombre) {
+      <app-ficha-personaje
+        [personaje]="personaje"
+        [modoHalloween]="modoHalloween"
+        [modoNavidad]="modoNavidad"
+      ></app-ficha-personaje>
+    }
+  </div>
 </div>

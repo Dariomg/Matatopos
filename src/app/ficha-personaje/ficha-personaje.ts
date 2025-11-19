@@ -3,15 +3,22 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ficha-personaje',
-  imports: [CommonModule],
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './ficha-personaje.html',
   styleUrls: ['./ficha-personaje.css']
 })
 export class FichaPersonaje {
+
   @Input() personaje!: { nombre: string; raza: string; poder: number; imagen: string };
 
+  @Input() modoHalloween = false;   
+  @Input() modoNavidad = false;     
+
   getColorFondo(): string {
+    if (this.modoHalloween) return '#260000';
+    if (this.modoNavidad) return '#024c7c';
+
     switch (this.personaje.raza) {
       case 'Titanus-Gojira': return '#c7c0f0ff';
       case 'Titanus-Ghidorah': return '#d4c640ff';
