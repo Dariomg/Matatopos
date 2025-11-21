@@ -10,6 +10,7 @@ import { Carrera } from './carrera/carrera';
 import { ListaPersonajes } from './lista-personajes/lista-personajes';
 import { FormularioRegistro } from './formulario-registro/formulario-registro';
 import { KanbanBoard } from './kanban-board/kanban-board';
+import { Clicker } from './clicker/clicker';
 
 bootstrapApplication(ListaPersonajes)
   .catch(err => console.error(err));
@@ -19,7 +20,7 @@ bootstrapApplication(FormularioRegistro)
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, Contador, Matatopos, CirculoComponent, NavBar, Carrera, ListaPersonajes, FormularioRegistro, KanbanBoard],
+  imports: [RouterOutlet, CommonModule, Contador, Matatopos, CirculoComponent, NavBar, Carrera, ListaPersonajes, FormularioRegistro, KanbanBoard, Clicker],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
