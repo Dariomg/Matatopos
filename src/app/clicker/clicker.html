@@ -1,1 +1,74 @@
-<p>clicker works!</p>
+<div class="clicker-root" [class.powerup]="powerupActive"  [ngClass]="{'modo-halloween': modoHalloween,'modo-navidad': modoNavidad}">
+  <div class="header">
+    <h2>Clicker</h2>
+    <div class="stats">
+      <div class="big-counter">
+        <div class="label">Monedas</div>
+        <div class="value">{{ formatNumber(monedas) }}</div>
+        <div class="sub">Total generado: {{ formatNumber(monedasTotalesGeneradas) }}</div>
+      </div>
+
+      <div class="pps">
+        <div class="label">Producción / s</div>
+        <div class="value">{{ formatNumber(produccionPorSegundo * multiplicadorTemporal) }}</div>
+        <div class="sub">Base: {{ formatNumber(produccionPorSegundo) }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="play-area">
+    <div class="coin-zone">
+      <img src="/imagenes/moneda.png" alt="moneda" class="coin" (click)="clickMoneda()">
+      <div class="click-info">+{{ formatNumber(monedasPorClick * multiplicadorTemporal) }}</div>
+    </div>
+
+    <div *ngIf="powerupVisible" class="powerup" [style.left.%]="powerupX" [style.top.%]="powerupY" (click)="clickPowerup()">
+      ✨
+    </div>
+  </div>
+
+  <div class="panels">
+    <div class="panel upgrades">
+      <h3>Mejoras de producción</h3>
+      <div class="upgrade" 
+          *ngFor="let u of upgrades; let i = index"
+          [class.disabled]="monedas < u.cost">
+        <div class="left">
+          <div class="name">{{ u.name }}</div>
+          <div class="prod">{{ u.production }} /s c/u</div>
+        </div>
+        <div class="mid">
+          <div class="count">x{{ u.count }}</div>
+        </div>
+        <div class="right">
+          <div class="cost">{{ formatNumber(u.cost) }}</div>
+          <button (click)="buyUpgrade(i)" [disabled]="monedas < u.cost">Comprar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel clickups">
+      <h3>Mejoras de click</h3>
+      <div class="upgrade"
+          *ngFor="let c of clickUpgrades; let i = index"
+          [class.disabled]="monedas < c.cost">
+        <div class="left">
+          <div class="name">{{ c.name }}</div>
+          <div class="prod">+{{ c.extraClick }}/click</div>
+        </div>
+        <div class="mid">
+          <div class="count">x{{ c.count }}</div>
+        </div>
+        <div class="right">
+          <div class="cost">{{ formatNumber(c.cost) }}</div>
+          <button (click)="buyClickUpgrade(i)" [disabled]="monedas < c.cost">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button (click)="resetGame()">Reiniciar partida</button>
+    <div class="note">Powerup activo: <strong *ngIf="powerupActive">Sí (x{{ powerupMultiplier }})</strong><span *ngIf="!powerupActive">No</span></div>
+  </div>
+</div>

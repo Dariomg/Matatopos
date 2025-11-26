@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { bootstrapApplication } from '@angular/platform-browser';
 import { Contador } from './contador/contador';
 import { Matatopos } from './matatopos/matatopos';
 import { CirculoComponent } from './circulo/circulo';
@@ -12,15 +11,22 @@ import { FormularioRegistro } from './formulario-registro/formulario-registro';
 import { KanbanBoard } from './kanban-board/kanban-board';
 import { Clicker } from './clicker/clicker';
 
-bootstrapApplication(ListaPersonajes)
-  .catch(err => console.error(err));
-
-bootstrapApplication(FormularioRegistro)
-  .catch(err => console.error(err));
-
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, Contador, Matatopos, CirculoComponent, NavBar, Carrera, ListaPersonajes, FormularioRegistro, KanbanBoard, Clicker],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    Contador,
+    Matatopos,
+    CirculoComponent,
+    NavBar,
+    Carrera,
+    ListaPersonajes,
+    FormularioRegistro,
+    KanbanBoard,
+    Clicker
+  ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
