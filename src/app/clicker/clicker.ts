@@ -17,6 +17,10 @@ export class Clicker implements OnInit, OnDestroy {
   produccionPorSegundo: number = 0;
   multiplicadorTemporal: number = 1;
 
+  powerupTiempoRestante = 0;
+  powerupDuracion = 10000;
+  powerupInterval: any = null;
+
   modoHalloween = false;
   modoNavidad = false;
 
@@ -98,11 +102,9 @@ export class Clicker implements OnInit, OnDestroy {
     }, 1000);
     this.intervalPowerupSpawner = setInterval(() => {
       this.spawnPowerup();
-    }, 8000);
+    }, 12000);
     setInterval(() => this.saveGame(), 5000);
   }
-
-
 
   ngOnDestroy(): void {
     clearInterval(this.intervalTick);
@@ -157,13 +159,17 @@ export class Clicker implements OnInit, OnDestroy {
     this.powerupVisible = false;
     this.powerupActive = true;
     this.multiplicadorTemporal = this.powerupMultiplier;
-
-    setTimeout(() => {
-      this.powerupActive = false;
-      this.multiplicadorTemporal = 1;
-    }, 5000);
+    this.powerupTiempoRestante = this.powerupDuracion;
+    if (this.powerupInterval) clearInterval(this.powerupInterval);
+    this.powerupInterval = setInterval(() => {
+      this.powerupTiempoRestante -= 100;
+      if (this.powerupTiempoRestante <= 0) {
+        clearInterval(this.powerupInterval);
+        this.powerupActive = false;
+        this.multiplicadorTemporal = 1;
+      }
+    }, 100);
   }
-
 
   resetGame() {
     this.monedas = 0;

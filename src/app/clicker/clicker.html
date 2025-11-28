@@ -1,4 +1,10 @@
-<div class="clicker-root" [class.powerup]="powerupActive"  [ngClass]="{'modo-halloween': modoHalloween,'modo-navidad': modoNavidad}">
+<div class="clicker-root" [ngClass]="{
+    'modo-halloween': modoHalloween && !powerupActive,
+    'modo-navidad': modoNavidad && !powerupActive,
+    'modo-powerup': powerupActive && !modoHalloween && !modoNavidad,
+    'modo-halloween-powerup': powerupActive && modoHalloween,
+    'modo-navidad-powerup': powerupActive && modoNavidad
+  }">
   <div class="header">
     <h2>Clicker</h2>
     <div class="stats">
@@ -68,7 +74,14 @@
   </div>
 
   <div class="footer">
-    <button (click)="resetGame()">Reiniciar partida</button>
-    <div class="note">Powerup activo: <strong *ngIf="powerupActive">Sí (x{{ powerupMultiplier }})</strong><span *ngIf="!powerupActive">No</span></div>
+  <button (click)="resetGame()">Reiniciar partida</button>
+    <div class="note">
+      Powerup activo:
+      <strong *ngIf="powerupActive">
+        Sí (x{{ powerupMultiplier }}) —
+        <span class="timer">{{ (powerupTiempoRestante/1000) | number:'1.1-1' }}s</span>
+      </strong>
+      <span *ngIf="!powerupActive">No</span>
+    </div>
   </div>
 </div>

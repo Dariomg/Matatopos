@@ -38,17 +38,6 @@
 
 .click-info { font-weight:600; color:#ffd700; }
 
-.powerup {
-  position:absolute;
-  transform: translate(-50%,-50%);
-  font-size:28px;
-  cursor:pointer;
-  animation: floaty 2s infinite;
-  background: rgba(255,255,255,0.06);
-  padding:6px 10px;
-  border-radius:8px;
-}
-
 .upgrade.disabled {
   opacity: 0.45;
   filter: grayscale(100%);
@@ -59,8 +48,28 @@
   cursor: not-allowed;
 }
 
+.powerup {
+  position: absolute;
+  font-size: 32px;
+  cursor: pointer;
+  animation: float 1.5s infinite ease-in-out;
+  z-index: 5;
+}
+
+.modo-powerup {
+  background: linear-gradient(180deg, #34005c, #12002b);
+}
+
+.modo-powerup .coin {
+  filter: drop-shadow(0 0 15px gold) brightness(1.4);
+}
+
+.modo-powerup .panel {
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
 .modo-halloween {
-  background: linear-gradient(180deg, #2b1a00, #120800) !important;
+  background: linear-gradient(180deg, #2b0a00, #000000);
 }
 
 .modo-halloween .coin {
@@ -73,6 +82,12 @@
   box-shadow: 0 0 8px rgba(255,140,0,0.4);
 }
 
+.modo-halloween-powerup {
+  background: linear-gradient(180deg, #ff5300, #4a0000);
+  transition: background 0.4s ease;
+}
+
+
 .modo-halloween .upgrade button {
   background: #ff6f00 !important;
 }
@@ -82,7 +97,7 @@
 }
 
 .modo-navidad {
-  background: linear-gradient(180deg, #003300, #001a00) !important;
+  background: linear-gradient(180deg, #0b2b00, #001a00);
 }
 
 .modo-navidad .coin {
@@ -93,6 +108,11 @@
   background: rgba(0, 200, 0, 0.08) !important;
   border: 1px solid #ff0000;
   box-shadow: 0 0 8px rgba(255,0,0,0.4);
+}
+
+.modo-navidad-powerup {
+  background: linear-gradient(180deg, #00ff55, #004422);
+  transition: background 0.4s ease;
 }
 
 .modo-navidad .upgrade button {
